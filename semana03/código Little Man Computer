@@ -1,0 +1,18 @@
+       INP
+STA    num1
+       INP
+STA    num2
+
+loop   LDA num1
+       OUT
+SUB    num2
+BRP    HLT
+
+LDA    num1
+ADD    ONE
+STA    num1
+BRA    loop
+
+one    DAT 1
+num1   DAT
+num2   DAT
