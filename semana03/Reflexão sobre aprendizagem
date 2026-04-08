@@ -1,1 +1,3 @@
-
+Dentro da terceira semana de aulas nos aprofundamos na estrutura lógica do computador, especificamente da CPU, onde
+conhecemos os registradores e a unidade de controle. Também contruímos um programa em um simulador de CPU chamado
+"Little Man Computer", eu desenvolvi um programa de contagem progressiva.
