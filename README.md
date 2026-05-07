@@ -7,3 +7,5 @@ Dentro destas duas semanas fomos introduzidos ao mundo da programação de forma
 as diferentes liguagens de programação e até desenvolvemos programas. Foi uma parte bastante densa em questão teórica, não sei se consegui
 absorver tudo o que o professor explicou, mas estou confiante em relação ao que aprendemos sobre a estrutura de uma CPU e a realizar um programa
 dentro dela.
+
+**<ins>semana04/semana05/semana06</ins>**
