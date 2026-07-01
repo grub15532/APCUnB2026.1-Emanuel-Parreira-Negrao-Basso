@@ -1,0 +1,135 @@
+var sea = createSprite(200, 200);
+sea.setAnimation("background_underwater_17_1");
+sea.scale = 1.1;
+var points = createSprite(400, 307);
+points.setAnimation("fish_green_1");
+points.scale = 0.5;
+points.velocityX = -8;
+var pedra = createSprite(400, 360);
+pedra.setAnimation("rocks_1");
+pedra.scale = 0.2;
+pedra.velocityX = -3;
+var peixe = createSprite(400, 200);
+peixe.setAnimation("fish_01_1");
+peixe.scale = 0.2;
+peixe.velocityX = -5;
+var eu = createSprite(30, 200);
+eu.setAnimation("creature_11_1");
+eu.scale = 0.2;
+var score = 0;
+var health = 100;
+
+
+
+function draw() {
+
+
+movement();
+resetpeixe();
+resetpoints();
+resetpedra();
+interactionpeixe();
+interactionpedra();
+interactionpoints();
+drawSprites();
+heath();
+scoreboard();
+}
+
+function resetpedra() {
+  if (pedra.x <= 0) {
+    pedra.x = 400;
+    pedra.y = randomNumber(0, 400);
+  }
+}
+function resetpeixe() {
+  if ((peixe.x) <= 0) {
+    peixe.x = 400;
+    peixe.y = randomNumber(0, 400);
+  }
+}
+function resetpoints() {
+  if ((points.x) <= 0) {
+    points.x = 400;
+    points.y = randomNumber(0, 400);
+  }
+}
+function heath() {
+  fill("black");
+    textSize(20);
+    text("Health:", 280, 30);
+    text (health, 350, 30);
+    if (health <= 0) {
+      background("black");
+      fill("green");
+      textSize(50);
+      text("Game Over!" , 40, 200);
+    }
+}
+function scoreboard() {
+  fill("black");
+    textSize(20);
+    text("Points:", 20, 30);
+    text (score, 90, 30);
+  if (20 > score && score >= 10) {
+    sea.setAnimation("bg_landscape10_1");
+    peixe.setAnimation("shark_1");
+    peixe.scale = 0.5;
+    points.setAnimation("fish_01_1");
+    points.scale = 0.1;
+  } else if ((30 > score && score >= 20)) {
+    sea.setAnimation("background_landscape26_1");
+    peixe.setAnimation("birdside_05_1");
+    peixe.scale = 0.3;
+    pedra.setAnimation("planeGreen1_1");
+    pedra.scale = 1.5;
+    points.setAnimation("birdside_15_1");
+    points.scale = 0.1;
+  } else if ((score == 30)) {
+    sea.setAnimation("space_1");
+    eu.x = 200;
+    eu.y = 200;
+    pedra.velocityX = 50;
+    peixe.velocityX = 50;
+    points.velocityX = 50;
+      fill("gray");
+      textSize(50);
+      text("Você ganhou!!!" , 40, 150);
+  }
+    
+}
+function movement() {
+  if (keyDown("up")) {
+  eu.y = eu.y - 3;
+  }
+  if (keyDown("left")) {
+  eu.x = eu.x - 3;
+  }
+  if (keyDown("right")) {
+  eu.x = eu.x + 3;
+  }
+  if (keyDown("down")) {
+  eu.y = eu.y + 3; 
+  }
+}
+function interactionpeixe() {
+  if (eu.isTouching(peixe)) {
+    health = health - 10;
+    peixe.x = 400;
+    peixe.y = randomNumber(0, 400);
+  }
+}
+function interactionpedra() {
+  if (eu.isTouching(pedra)) {
+  health = health - 5;
+  pedra.x = 400;
+  pedra.y = randomNumber(0, 400);
+}
+}
+function interactionpoints() {
+  if (eu.isTouching(points)) {
+    score = score + 1;
+    points.x = 400;
+    points.y = randomNumber(0, 400);
+  }
+}
