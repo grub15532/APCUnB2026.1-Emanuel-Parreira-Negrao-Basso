@@ -9,3 +9,11 @@ absorver tudo o que o professor explicou, mas estou confiante em relação ao qu
 dentro dela.
 
 **<ins>semana04/semana05/semana06</ins>**
+
+Por conta da ausência do professor durante estas semanas foi feito um curso online sobre desenvolvimento de jogo, sendo executada uma lição por dia
+no decorrer de três semanas. Foi possível entender a parte prática da matéria e utilizar os conhecimentos passados durante as três semanas de aula. 
+Informações aprendidas dentro do curso e que acho importante comentar foram o Draw Loop, usado para repetir linhas de código, e o manuseio de funções 
+para a organização do código.
+
+**<ins>semana07/semana08</ins>**
+
