@@ -21,3 +21,10 @@ Durante essas duas semanas não foram apresentados novos conceitos e atividades,
 aqueles que sentiram dificuldades no trabalho envolvendo o desenvolvimento do jogo.
 
 **<ins>semana09/semana10</ins>**
+
+Agora com o básico da programação introduzido fomos capazes de avançar e conhecer a primeira linguagem de programação do curso, a linguagem C. Dentro
+dela aprendemos sobre a estrutura do heap (a pilha de exexução) e stack (armazenamento de objetos), com isso em mente pudemos explorar a escrita e 
+interpretação de códigos em si, assim executando alguns exercícios em sala por meio do python tutor.
+
+**<ins>semana11/semana12</ins>**
+
