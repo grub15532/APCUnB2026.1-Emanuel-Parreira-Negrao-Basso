@@ -17,3 +17,7 @@ para a organização do código.
 
 **<ins>semana07/semana08</ins>**
 
+Durante essas duas semanas não foram apresentados novos conceitos e atividades, mas sim revisão das últimas seis semanas e tirada de dúvidas para
+aqueles que sentiram dificuldades.
+
+**<ins>semana09/semana10</ins>**
