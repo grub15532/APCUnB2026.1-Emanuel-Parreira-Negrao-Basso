@@ -26,5 +26,8 @@ Agora com o básico da programação introduzido fomos capazes de avançar e con
 dela aprendemos sobre a estrutura do heap (a pilha de exexução) e stack (armazenamento de objetos), com isso em mente pudemos explorar a escrita e 
 interpretação de códigos em si, assim executando alguns exercícios em sala por meio do python tutor.
 
-**<ins>semana11/semana12</ins>**
+**<ins>semana11/semana12/semana13</ins>**
 
+No decorrer dessas três semanas foi apresentado a segunda linguagem do curso, python, e com ela não foi necessário a apresentação de sua estrutura
+além de algumas diferenças importantes da linguagem C como: as variáveis funcionam como ponteiros e sua dinânima com listas (arrays). Com base nestes 
+conhecimentos foi necessário executar um conjunto de exercícios em sala como feito durante o aprendizado da linguagem C.
