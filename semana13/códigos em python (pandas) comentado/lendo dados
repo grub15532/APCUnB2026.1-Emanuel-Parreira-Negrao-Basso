@@ -1,0 +1,4 @@
+import pandas as pd
+
+moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
+print(moradores.head())
