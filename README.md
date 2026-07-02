@@ -39,4 +39,4 @@ Essas duas semanas foram focadas, majoritariamente, na execução da prova e apr
 duas bibliotecas importantes do python: tkinter e o matplotlib. Estas duas serão necessárias para as atividade dentro do trabalho final. Também foi preciso
 realizar exercícios em sala destas bibliotecas específicas.
 
-**<ins>semana16/semana17/semana18</ins>**
+**<ins>semana16/semana17</ins>**
