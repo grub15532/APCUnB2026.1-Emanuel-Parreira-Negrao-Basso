@@ -58,6 +58,7 @@ meu_dicionario = dict(zip(RAsMenu, RAsNumeros))
 
 
 def exportar():
+    """Exporta para um arquivo os domicílios da região administrativa selecionada."""
     resultado = selecionado.get()
 
     if resultado not in meu_dicionario:
@@ -97,6 +98,7 @@ def exportar():
 
 
 def grafico():
+    """Exibe uma janela com gráficos dos dados da região administrativa selecionada."""
     resultado = selecionado.get()
     value = meu_dicionario[resultado]
     loc = domicilios[domicilios["localidade"] == value]
@@ -114,6 +116,7 @@ def grafico():
     benp = [f"Com benefício\n{ben[0]}", f"Sem benefício\n{ben[1]}", f"Não sabe\n{ben[2]}"]
 
     def plot_graph(selection):
+        """Atualiza o gráfico conforme a categoria escolhida pelo usuário."""
         ax.clear()
 
         if selection == "Benefício":
