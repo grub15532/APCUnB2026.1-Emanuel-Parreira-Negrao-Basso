@@ -1,0 +1,6 @@
+import pandas as pd
+
+moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
+
+adultos = moradores[moradores["idade_calculada"] != 99999]
+print(adultos[["morador_id", "idade_calculada"]])
