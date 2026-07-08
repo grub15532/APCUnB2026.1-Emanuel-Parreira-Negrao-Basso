@@ -40,3 +40,5 @@ duas bibliotecas importantes do python: tkinter e o matplotlib. Estas duas serã
 realizar exercícios em sala destas bibliotecas específicas.
 
 **<ins>semana16/semana17</ins>**
+
+A reta final da disciplina foi completamente focada na finalização dos trabalhos finais e sua apresentação.
