@@ -122,19 +122,19 @@ def grafico():
         if selection == "Benefício":
             x = benp
             y = ben
-            ax.set_title(f"Domicílios que recebem benefícios ({resultado})")
+            ax.set_title(f"Domicílios que recebem benefícios ({resultado})\nTotal de domicílios: {sum(y)}")
         elif selection == "Situação":
             x = sitp
             y = sit
-            ax.set_title(f"Situação dos domicílios ({resultado})")
+            ax.set_title(f"Situação dos domicílios ({resultado})\nTotal de domicílios: {sum(y)}")
         elif selection == "Espécie":
             x = espp
             y = esp
-            ax.set_title(f"Espécie dos domicílios ({resultado})")
+            ax.set_title(f"Espécie dos domicílios ({resultado})\nTotal de domicílios: {sum(y)}")
         elif selection == "Tipo":
             x = tipop
             y = tipo
-            ax.set_title(f"Tipos de domicílios ({resultado})")
+            ax.set_title(f"Tipos de domicílios ({resultado})\nTotal de domicílios: {sum(y)}")
         else:
             return
 
