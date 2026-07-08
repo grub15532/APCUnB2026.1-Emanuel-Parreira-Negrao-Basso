@@ -115,6 +115,9 @@ def grafico():
     ben = [(loc["D15"] == 1).sum(), (loc["D15"] == 2).sum(), (loc["D15"] == 88888).sum()]
     benp = [f"Com benefício\n{ben[0]}", f"Sem benefício\n{ben[1]}", f"Não sabe\n{ben[2]}"]
 
+    esg = [(loc["B14"] == 1).sum(), (loc["B14"] == 2).sum(), (loc["B14"] == 88888).sum()]
+    esgp = [f"Sim\n{esg[0]}", f"Não\n{esg[1]}", f"Não sabe\n{esg[1]}"]
+
     def plot_graph(selection):
         """Atualiza o gráfico conforme a categoria escolhida pelo usuário."""
         ax.clear()
@@ -135,6 +138,10 @@ def grafico():
             x = tipop
             y = tipo
             ax.set_title(f"Tipos de domicílios ({resultado})\nTotal de domicílios: {sum(y)}")
+        elif selection == "Esgoto":
+            x = esgp
+            y = esg
+            ax.set_title(f"Existe saneamento básico? ({resultado})\nTotal de domicílios: {sum(y)}")
         else:
             return
 
@@ -159,7 +166,7 @@ def grafico():
 
     selected_option = tk.StringVar(value="Espécie")
 
-    opcoes = ["Espécie", "Tipo", "Situação", "Benefício"]
+    opcoes = ["Espécie", "Tipo", "Situação", "Benefício", "Esgoto"]
     for opt in opcoes:
         ttk.Radiobutton(
             janela2,
