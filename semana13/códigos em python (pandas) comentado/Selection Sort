@@ -1,0 +1,19 @@
+import pandas as pd
+
+moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
+
+com_renda = moradores[(moradores["renda_ind"] > 0) & (moradores["renda_ind"] != 99999)].copy()
+lista = com_renda[["morador_id", "renda_ind"]].to_dict("records")
+
+# Selection Sort por renda (crescente)
+n = len(lista)
+for i in range(n):
+    idx_min = i
+    for j in range(i + 1, n):
+        if lista[j]["renda_ind"] < lista[idx_min]["renda_ind"]:
+            idx_min = j
+    lista[i], lista[idx_min] = lista[idx_min], lista[i]
+
+print("Moradores ordenados por renda (menor para maior):")
+for m in lista:
+    print(f"  {m['morador_id']}: R$ {m['renda_ind']:,.0f}")
