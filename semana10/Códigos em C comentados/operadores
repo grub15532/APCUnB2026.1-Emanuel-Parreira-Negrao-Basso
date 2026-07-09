@@ -1,17 +1,29 @@
 #include <stdio.h>
 
 int main(void) {
+
+    // Cria duas variáveis inteiras.
     int a = 17, b = 5;
 
-    printf("%d / %d = %d\n", a, b, a / b);  /* divisao inteira */
-    printf("%d %% %d = %d\n", a, b, a % b); /* resto */
+    // Mostra a divisão inteira e o resto da divisão.
+    printf("%d / %d = %d\n", a, b, a / b);
+    printf("%d %% %d = %d\n", a, b, a % b);
 
+    // Testa o uso do incremento antes e depois da variável.
     int x = 3;
-    int pre  = ++x;   /* x vira 4, pre  = 4 */
-    int pos  = x++;   /* pos = 4, x  vira 5 */
+
+    // Primeiro aumenta x e depois guarda o valor em pre.
+    int pre = ++x;
+
+    // Guarda o valor e depois aumenta x.
+    int pos = x++;
+
     printf("pre=%d  pos=%d  x=%d\n", pre, pos, x);
 
+    // Escolhe o maior valor entre a e b.
     int max = (a > b) ? a : b;
+
     printf("max(%d,%d) = %d\n", a, b, max);
+
     return 0;
 }
