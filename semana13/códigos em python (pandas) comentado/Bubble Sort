@@ -1,17 +1,30 @@
 import pandas as pd
 
+# Lê o arquivo com os dados dos moradores.
 moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
 
+# Mantém apenas os moradores com idade válida.
 validos = moradores[moradores["idade_calculada"] != 99999].copy()
+
+# Cria uma lista com o ID e a idade de cada morador.
 lista = validos[["morador_id", "idade_calculada"]].to_dict("records")
 
-# Bubble Sort por idade
+# Bubble Sort: ordena a lista da menor para a maior idade.
 n = len(lista)
+
+# Percorre toda a lista.
 for i in range(n):
+
+    # Compara os elementos vizinhos.
     for j in range(n - i - 1):
+
+        # Se a idade atual for maior que a próxima, troca as posições.
         if lista[j]["idade_calculada"] > lista[j + 1]["idade_calculada"]:
             lista[j], lista[j + 1] = lista[j + 1], lista[j]
 
+# Mostra os moradores já ordenados.
 print("Moradores ordenados do mais novo ao mais velho:")
+
+# Exibe o ID e a idade de cada morador.
 for m in lista:
     print(f"  {m['morador_id']}: {m['idade_calculada']} anos")
