@@ -1,16 +1,23 @@
 #include <stdio.h>
 
 int main(void) {
+
+    // Cria um vetor com 5 números.
     int v[5] = {10, 20, 30, 40, 50};
 
-    /* soma dos elementos */
+    // Soma os valores do vetor.
     int soma = 0;
     for (int i = 0; i < 5; i++)
         soma += v[i];
+
+    // Mostra a soma.
     printf("soma = %d\n", soma);
 
-    /* matriz 2x3 */
+    // Cria uma matriz com 2 linhas e 3 colunas.
     int m[2][3] = {{1, 2, 3}, {4, 5, 6}};
-    printf("m[1][2] = %d\n", m[1][2]);  /* 6 */
+
+    // Mostra o valor da posição linha 2, coluna 3.
+    printf("m[1][2] = %d\n", m[1][2]);
+
     return 0;
 }
