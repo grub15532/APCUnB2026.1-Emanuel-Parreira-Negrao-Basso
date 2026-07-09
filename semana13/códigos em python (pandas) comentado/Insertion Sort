@@ -1,7 +1,9 @@
 import pandas as pd
 
+# Lê o arquivo com os dados dos moradores.
 moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
 
+# Dicionário que relaciona o código da região ao seu nome.
 ra_nomes = {
     5249: "Arniqueira",    5301: "Brasília",       5303: "Taguatinga",
     5305: "Sobradinho",    5311: "Cruzeiro",        5313: "Ceilândia",
@@ -10,19 +12,29 @@ ra_nomes = {
     5330: "São Sebastião",
 }
 
+# Pega todos os códigos de regiões que aparecem no arquivo.
 codigos = moradores["localidade"].unique().tolist()
+
+# Cria uma lista com o código e o nome de cada região.
 ras = [{"codigo": c, "nome": ra_nomes.get(c, f"RA-{c}")} for c in codigos]
 
-# Insertion Sort por nome
+# Insertion Sort: ordena as regiões em ordem alfabética.
 for i in range(1, len(ras)):
     chave = ras[i]
     j = i - 1
+
+    # Move os nomes maiores uma posição para a frente.
     while j >= 0 and ras[j]["nome"] > chave["nome"]:
         ras[j + 1] = ras[j]
         j -= 1
+
+    # Coloca a região na posição correta.
     ras[j + 1] = chave
 
+# Mostra as regiões em ordem alfabética.
 print("Regiões Administrativas (ordem alfabética):")
+
+# Conta quantos moradores existem em cada região e exibe o resultado.
 for ra in ras:
     total = (moradores["localidade"] == ra["codigo"]).sum()
     print(f"  {ra['nome']} (cód. {ra['codigo']}): {total} moradores na amostra")
