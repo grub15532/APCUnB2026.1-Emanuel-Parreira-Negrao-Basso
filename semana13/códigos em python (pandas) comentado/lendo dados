@@ -1,4 +1,7 @@
 import pandas as pd
 
+# Lê o arquivo com os dados dos moradores
 moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
+
+# Coloca no output estes dados lidos
 print(moradores.head())
