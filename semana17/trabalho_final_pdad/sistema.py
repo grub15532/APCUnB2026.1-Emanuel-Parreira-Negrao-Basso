@@ -8,18 +8,15 @@ from matplotlib.backends.backend_tkagg import (
     FigureCanvasTkAgg,
 )
 
-arquivo_moradores = filedialog.askopenfilename(
-    title="Selecione moradores.csv",
-    filetypes=[("CSV", "*.csv")]
-)
+arquivo_moradores = filedialog.askopenfilename(title="Selecione moradores.csv", filetypes=[("CSV", "*.csv")]) # Abre uma janela para o usuário selecionar o arquivo de moradores
 
-arquivo_domicilios = filedialog.askopenfilename(
-    title="Selecione domicilios.csv",
-    filetypes=[("CSV", "*.csv")]
-)
+arquivo_domicilios = filedialog.askopenfilename(title="Selecione domicilios.csv", filetypes=[("CSV", "*.csv")]) # Abre uma janela para selecionar o arquivo de domicílios
 
+# Lê os arquivos CSV utilizando o pandas
 moradores = pd.read_csv(arquivo_moradores, sep=";", decimal=",", encoding="utf-8-sig", low_memory=False)
 domicilios = pd.read_csv(arquivo_domicilios, sep=",", encoding="utf-8-sig")
+
+#Conta a quantidade de linhas dentro de cada data frame
 qtd_linhasm = len(moradores)
 qtd_linhasd = len(domicilios)
 
@@ -45,31 +42,26 @@ RAsNumeros = [5335, 5320, 5241, 5242, 5336,
 5305, 5326, 5332, 5322, 5303,
 5252, 5323, 5330]
 
-meu_dicionario = dict(zip(RAsMenu, RAsNumeros))
+meu_dicionario = dict(zip(RAsMenu, RAsNumeros)) # Pega as duas listas anteriores e cria um dicionário com elas
 
 def exportar():
     """Exporta para um arquivo os domicílios da região administrativa selecionada."""
-    resultado = selecionado.get()
+    resultado = selecionado.get() # Obtém a região escolhida pelo usuário
 
+    # Verifica se uma região foi selecionada
     if resultado not in meu_dicionario:
         showinfo("Aviso", "Selecione uma região.")
         return
 
-    value = meu_dicionario[resultado]
-    loc = domicilios[domicilios["localidade"] == value]
+    value = meu_dicionario[resultado] # Obtém o código correspondente à região
+    loc = domicilios[domicilios["localidade"] == value] # Filtra apenas os domicílios dessa região
 
-    arquivo = filedialog.asksaveasfilename(
-        initialfile=f"{resultado}.csv",
-        defaultextension=".csv",
-        filetypes=[
-            ("CSV", "*.csv"),
-            ("Arquivo de texto", "*.txt")
-        ]
-    )
+    arquivo = filedialog.asksaveasfilename(initialfile=f"{resultado}.csv", defaultextension=".csv", filetypes=[("CSV", "*.csv"), ("Arquivo de texto", "*.txt")])
 
     if not arquivo:
         return
 
+    # Exporta em CSV ou TXT dependendo da extensão escolhida
     if arquivo.endswith(".csv"):
         loc.to_csv(arquivo, index=False, sep=";", encoding="utf-8-sig")
     else:
@@ -82,11 +74,13 @@ def grafico():
     """Exibe uma janela com gráficos dos dados da região administrativa selecionada."""
     resultado = selecionado.get()
     value = meu_dicionario[resultado]
-    loc = domicilios[domicilios["localidade"] == value]
+    loc = domicilios[domicilios["localidade"] == value] # Filtra os dados da região selecionada
 
+    # Conta quantos domicílios são permanentes e improvisados
     esp = [(loc["B01"] == 1).sum(), (loc["B01"] == 2).sum()]
     espp = [f"Permanente\n{esp[0]}", f"Improvisado\n{esp[1]}"]
 
+    # Conta os tipos de domicílio
     tipo = [(loc["B02"] == 1).sum(), (loc["B02"] == 2).sum(), (loc["B02"] == 3).sum()]
     tipop = [f"Casa\n{tipo[0]}", f"Apartamento\n{tipo[1]}", f"Cômodo\n{tipo[2]}"]
 
@@ -101,8 +95,9 @@ def grafico():
 
     def plot_graph(selection):
         """Atualiza o gráfico conforme a categoria escolhida pelo usuário."""
-        ax.clear()
+        ax.clear() # Limpa o gráfico anterior antes de desenhar um novo
 
+        # Atualiza o gráfica com os dados de acordo com o radio button selecionado
         if selection == "Benefício":
             x = benp
             y = ben
@@ -126,14 +121,13 @@ def grafico():
         else:
             return
 
-        graf = ax.bar(x, y, label=selection)
+        graf = ax.bar(x, y, label=selection) # Desenha o gráfico de barras
         total = sum(y)
-        percentages = [v / total * 100 for v in y]
-        ax.bar_label(graf, labels=[f"{p:.1f}%" for p in percentages], padding=3)
+        percentages = [v / total * 100 for v in y] # Calcula a porcentagem de cada categoria
+        ax.bar_label(graf, labels=[f"{p:.1f}%" for p in percentages], padding=3) # Exibe as porcentagens acima das barras
         ax.legend()
         ax.grid(axis="y", linestyle="--", alpha = 0.5)
-
-        canvas.draw()
+        canvas.draw() # Atualiza o gráfico na janela
 
     janela2 = tk.Toplevel(janela)
     janela2.title(f"Gráfico ({resultado})")
@@ -148,17 +142,10 @@ def grafico():
     selected_option = tk.StringVar(value="Espécie")
 
     opcoes = ["Espécie", "Tipo", "Situação", "Benefício", "Esgoto"]
+
+    # Cria uma lista de botões para cada variável dentro da lista "opcoes"
     for opt in opcoes:
-        ttk.Radiobutton(
-            janela2,
-            text=opt,
-            value=opt,
-            variable=selected_option,
-            command=lambda: plot_graph(selected_option.get())
-        ).pack(anchor=tk.W, padx=10, pady=5)
-
-
-
+        ttk.Radiobutton(janela2, text=opt, value=opt, variable=selected_option, command=lambda: plot_graph(selected_option.get())).pack(anchor=tk.W, padx=10, pady=5)
     plot_graph(selected_option.get())
 
 def gerar_relatorio():
@@ -169,7 +156,7 @@ def gerar_relatorio():
         return
 
     value = meu_dicionario[resultado]
-    loc = domicilios[domicilios["localidade"] == value]
+    loc = domicilios[domicilios["localidade"] == value] 
 
     # Estatísticas
     esp = [(loc["B01"] == 1).sum(), (loc["B01"] == 2).sum()]
@@ -185,6 +172,7 @@ def gerar_relatorio():
     ben = [(loc["D15"] == 1).sum(), (loc["D15"] == 2).sum(), (loc["D15"] == 88888).sum()]
     esg = [(loc["B14"] == 1).sum(), (loc["B14"] == 2).sum(), (loc["B14"] == 88888).sum()]
 
+    # Solicita ao usuário onde salvar o relatório
     arquivo = filedialog.asksaveasfilename(
         initialfile=f"Relatorio_{resultado}.txt",
         defaultextension=".txt",
@@ -194,6 +182,7 @@ def gerar_relatorio():
     if not arquivo:
         return
 
+    # Escreve o relatório em um arquivo de texto
     with open(arquivo, "w", encoding="utf-8") as f:
         f.write("RELATÓRIO DE INFRAESTRUTURA DOS DOMICÍLIOS\n")
         f.write("=" * 60 + "\n\n")
@@ -231,18 +220,18 @@ def gerar_relatorio():
 
     showinfo("Sucesso", "Relatório gerado com sucesso!")
 
-janela = tk.Tk()
+janela = tk.Tk() # Cria a janela principal da aplicação
 janela.title("Trabalho de APC")
 janela.geometry("600x600")
 tk.Label(janela, text="Recorte D: infraestrutura e condições dos domicilios").pack(pady=1)
 tk.Label(janela, text="Aluno: Emanuel Parreira Negrão Basso (252008772)").pack(pady=1)
 tk.Label(janela, text=f"moradores: {qtd_linhasm} - domicilios: {qtd_linhasd}").pack(pady=1)
-selecionado = tk.StringVar(value="Escolha a região")
-option_menu = tk.OptionMenu(janela, selecionado, *meu_dicionario.keys())
+selecionado = tk.StringVar(value="Escolha a região") # Variável que armazena a região escolhida no menu
+option_menu = tk.OptionMenu(janela, selecionado, *meu_dicionario.keys()) # Cria o menu suspenso com todas as regiões administrativas
 option_menu.pack(pady=1)
-btn_show = tk.Button(janela, text="Confirmar", command=grafico)
+btn_show = tk.Button(janela, text="Confirmar", command=grafico) # Botão que abre a janela dos gráficos
 btn_show.pack(pady=1)
-exp = btn_exportar = tk.Button(janela, text="Exportar dados", command=exportar)
+exp = btn_exportar = tk.Button(janela, text="Exportar dados", command=exportar) # Botão para exportar os dados filtrados
 exp.pack(pady=1)
-btn_relatorio = tk.Button(janela, text="Gerar relatório", command=gerar_relatorio).pack(pady=1)
-janela.mainloop()
+btn_relatorio = tk.Button(janela, text="Gerar relatório", command=gerar_relatorio).pack(pady=1) # Botão que gera um relatório em formato TXT
+janela.mainloop() # Inicia o loop principal da interface gráfica
