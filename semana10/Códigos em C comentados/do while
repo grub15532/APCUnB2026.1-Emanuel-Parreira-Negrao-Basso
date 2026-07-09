@@ -1,10 +1,19 @@
 #include <stdio.h>
 
 int main(void) {
+
+    // Cria uma variável com valor inicial 1.
     int n = 1;
+
+    // Executa o bloco pelo menos uma vez e repete enquanto a condição for verdadeira.
     do {
+        // Mostra o valor atual de n.
         printf("n = %d\n", n);
+
+        // Dobra o valor de n.
         n *= 2;
-    } while (n < 32);
+
+    } while (n < 32); // Continua enquanto n for menor que 32.
+
     return 0;
 }
