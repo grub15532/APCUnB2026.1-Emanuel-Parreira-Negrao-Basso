@@ -1,6 +1,10 @@
 import pandas as pd
 
+# Carrega os arquivos dos moradores
 moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
 
+# Seleciona todos os moradores com idade diferente de 99999
 adultos = moradores[moradores["idade_calculada"] != 99999]
+
+# Coloca esses valores no output com o ID de cada
 print(adultos[["morador_id", "idade_calculada"]])
