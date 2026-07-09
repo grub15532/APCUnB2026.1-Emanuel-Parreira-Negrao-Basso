@@ -1,18 +1,31 @@
 #include <stdio.h>
 
+// Calcula o fatorial de um número.
 int fatorial(int n) {
+
+    // Para quando chega em 1.
     if (n <= 1) return 1;
-    return n * fatorial(n - 1);  /* chamada recursiva */
+
+    // Chama a função novamente com n menor.
+    return n * fatorial(n - 1);
 }
 
-void dobra(int *x) { *x *= 2; }
+// Dobra o valor de uma variável.
+void dobra(int *x) {
+    *x *= 2;
+}
 
 int main(void) {
+
+    // Calcula e mostra o fatorial de 5.
     int f = fatorial(5);
     printf("5! = %d\n", f);
 
+    // Cria uma variável e dobra seu valor.
     int v = 7;
     dobra(&v);
+
     printf("dobro de 7 = %d\n", v);
+
     return 0;
 }
