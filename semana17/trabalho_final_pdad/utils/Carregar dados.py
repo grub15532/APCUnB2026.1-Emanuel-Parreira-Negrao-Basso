@@ -1,15 +1,12 @@
-arquivo_moradores = filedialog.askopenfilename(
-    title="Selecione moradores.csv",
-    filetypes=[("CSV", "*.csv")]
-)
+arquivo_moradores = filedialog.askopenfilename(title="Selecione moradores.csv", filetypes=[("CSV", "*.csv")]) # Abre uma janela para o usuário selecionar o arquivo de moradores
 
-arquivo_domicilios = filedialog.askopenfilename(
-    title="Selecione domicilios.csv",
-    filetypes=[("CSV", "*.csv")]
-)
+arquivo_domicilios = filedialog.askopenfilename(title="Selecione domicilios.csv", filetypes=[("CSV", "*.csv")]) # Abre uma janela para selecionar o arquivo de domicílios
 
+# Lê os arquivos CSV utilizando o pandas
 moradores = pd.read_csv(arquivo_moradores, sep=";", decimal=",", encoding="utf-8-sig", low_memory=False)
 domicilios = pd.read_csv(arquivo_domicilios, sep=",", encoding="utf-8-sig")
+
+#Conta a quantidade de linhas dentro de cada data frame
 qtd_linhasm = len(moradores)
 qtd_linhasd = len(domicilios)
 
@@ -35,4 +32,4 @@ RAsNumeros = [5335, 5320, 5241, 5242, 5336,
 5305, 5326, 5332, 5322, 5303,
 5252, 5323, 5330]
 
-meu_dicionario = dict(zip(RAsMenu, RAsNumeros))
+meu_dicionario = dict(zip(RAsMenu, RAsNumeros)) # Pega as duas listas anteriores e cria um dicionário com elas
