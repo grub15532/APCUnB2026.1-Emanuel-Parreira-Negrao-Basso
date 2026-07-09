@@ -1,14 +1,23 @@
 import pandas as pd
 
+# Lê o arquivo com os dados dos moradores.
 moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
 
+# Seleciona apenas as idades válidas e cria uma lista com elas.
+# O valor 99999 representa uma idade inválida.
 idades = moradores[moradores["idade_calculada"] != 99999]["idade_calculada"].tolist()
 
+# Variável que vai armazenar a soma das idades.
 soma = 0
+
+# Percorre a lista de idades e soma cada valor.
 for idade in idades:
     soma = soma + idade
 
+# Calcula a média das idades.
 media = soma / len(idades)
+
+# Mostra a quantidade de moradores, a soma das idades e a média.
 print(f"Total de moradores com idade declarada: {len(idades)}")
 print(f"Soma das idades: {soma}")
 print(f"Média de idade: {media:.1f} anos")
