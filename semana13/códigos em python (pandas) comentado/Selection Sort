@@ -1,19 +1,33 @@
 import pandas as pd
 
+# Lê o arquivo com os dados dos moradores.
 moradores = pd.read_csv("moradores_parcial.csv", sep=";", decimal=",", encoding="utf-8-sig")
 
+# Filtra apenas moradores que possuem renda válida.
+# Remove rendas iguais a 0 ou ao valor usado para indicar dado inválido (99999).
 com_renda = moradores[(moradores["renda_ind"] > 0) & (moradores["renda_ind"] != 99999)].copy()
+
+# Cria uma lista com o ID do morador e sua renda.
 lista = com_renda[["morador_id", "renda_ind"]].to_dict("records")
 
-# Selection Sort por renda (crescente)
+# Selection Sort: ordena a lista da menor para a maior renda.
 n = len(lista)
+
+# Percorre a lista procurando o menor valor em cada etapa.
 for i in range(n):
     idx_min = i
+
+    # Procura a menor renda na parte que ainda não foi ordenada.
     for j in range(i + 1, n):
         if lista[j]["renda_ind"] < lista[idx_min]["renda_ind"]:
             idx_min = j
+
+    # Troca o menor valor encontrado para a posição atual.
     lista[i], lista[idx_min] = lista[idx_min], lista[i]
 
+# Mostra os moradores ordenados pela renda.
 print("Moradores ordenados por renda (menor para maior):")
+
+# Exibe o ID do morador e sua renda.
 for m in lista:
     print(f"  {m['morador_id']}: R$ {m['renda_ind']:,.0f}")
