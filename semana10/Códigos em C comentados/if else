@@ -1,12 +1,19 @@
 #include <stdio.h>
 
 int main(void) {
+
+    // Guarda a nota do aluno.
     int nota = 72;
 
-    if      (nota >= 90) printf("A\n");
-    else if (nota >= 80) printf("B\n");
-    else if (nota >= 70) printf("C\n");
-    else                 printf("Reprovado\n");
+    // Verifica em qual faixa de nota o aluno se encaixa.
+    if (nota >= 90)
+        printf("A\n");
+    else if (nota >= 80)
+        printf("B\n");
+    else if (nota >= 70)
+        printf("C\n");
+    else
+        printf("Reprovado\n");
 
     return 0;
 }
