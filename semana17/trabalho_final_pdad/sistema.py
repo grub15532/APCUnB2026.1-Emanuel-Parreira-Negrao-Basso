@@ -192,7 +192,7 @@ def grafico():
 
 janela = tk.Tk()
 janela.title("Trabalho de APC")
-janela.geometry("320x280")
+janela.geometry("600x600")
 tk.Label(janela, text="Recorte D: infraestrutura e condições dos domicilios").pack(pady=1)
 tk.Label(janela, text="Aluno: Emanuel Parreira Negrão Basso (252008772)").pack(pady=1)
 tk.Label(janela, text=f"moradores: {qtd_linhasm} - domicilios: {qtd_linhasd}").pack(pady=1)
