@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Coloca no output o tamanho de cada tipo de dado
 int main(void) {
     printf("char:   %zu byte(s)\n", sizeof(char));
     printf("int:    %zu byte(s)\n", sizeof(int));
