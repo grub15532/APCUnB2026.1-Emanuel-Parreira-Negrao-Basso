@@ -1,17 +1,27 @@
 #include <stdio.h>
 
 int main(void) {
-    int dia = 3;   /* 1=Seg ... 7=Dom */
 
+    // Guarda o número do dia da semana.
+    int dia = 3;
+
+    // Verifica qual é o dia e mostra a mensagem correspondente.
     switch (dia) {
+
+        // Dias de 1 a 5 são dias úteis.
         case 1: case 2: case 3: case 4: case 5:
             printf("Dia util\n");
             break;
+
+        // Dias 6 e 7 são fim de semana.
         case 6: case 7:
             printf("Fim de semana\n");
             break;
+
+        // Caso o número não seja válido.
         default:
             printf("Invalido\n");
     }
+
     return 0;
 }
