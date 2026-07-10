@@ -1,18 +1,18 @@
-       INP      #Aqui é colocado o primeiro input do usuário
-STA    num1     #Aqui o primeiro input é colocado no local de memória "num1"
-       INP      #Aqui é colocado o segundo input do usuário
-STA    num2     #Aqui o segundo input é colocado no local de memória "num2"
+       INP      // Aqui é colocado o primeiro input do usuário
+STA    num1     // Aqui o primeiro input é colocado no local de memória "num1"
+       INP      // Aqui é colocado o segundo input do usuário
+STA    num2     // Aqui o segundo input é colocado no local de memória "num2"
 
-loop   LDA num1 #Carrega o número no local de memória "num1" no acumulador
-       OUT      #Carrega o número do acumuludaor no output
-SUB    num2     #Aqui é subtraído o número no local de memória "num1" pelo número no local de memória "num2"
-BRP    HLT      #Se a subtração resultar em um número positivo o programa será finalizado
+loop   LDA num1 // Carrega o número no local de memória "num1" no acumulador
+       OUT      // Carrega o número do acumuludaor no output
+SUB    num2     // Aqui é subtraído o número no local de memória "num1" pelo número no local de memória "num2"
+BRP    HLT      // Se a subtração resultar em um número positivo o programa será finalizado
 
-LDA    num1     #Carrega o número no local de memória "num1" no acumulador
-ADD    ONE      #Adiciona mais um ao número dentro do acumulador
-STA    num1     #Agora o novo número será registrado dentro do local de memória "num1"
-BRA    loop     #Qualquer resultado irá levar o programa de volta para "loop LDA num1"
+LDA    num1     // Carrega o número no local de memória "num1" no acumulador
+ADD    ONE      // Adiciona mais um ao número dentro do acumulador
+STA    num1     // Agora o novo número será registrado dentro do local de memória "num1"
+BRA    loop     // Qualquer resultado irá levar o programa de volta para "loop LDA num1"
 
-one    DAT 1    #Aqui está guardado o número 1 no local de memória "one"
-num1   DAT      #Aqui está guardado um número inserido no local de memória "num1"
-num2   DAT      #Aqui está guardado um número inserido no local de memória "num2"
+one    DAT 1    // Aqui está guardado o número 1 no local de memória "one"
+num1   DAT      // Aqui está guardado um número inserido no local de memória "num1"
+num2   DAT      // Aqui está guardado um número inserido no local de memória "num2"
