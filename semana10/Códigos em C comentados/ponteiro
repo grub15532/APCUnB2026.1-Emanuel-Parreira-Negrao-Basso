@@ -1,15 +1,30 @@
 #include <stdio.h>
 
 int main(void) {
+
+    // Cria uma variável com valor 10.
     int x = 10;
+
+    // Cria um ponteiro que guarda o endereço de x.
     int *p = &x;
 
-    printf("x    = %d\n",  x);
-    printf("&x   = %p\n",  (void*)&x);
-    printf("p    = %p\n",  (void*)p);
-    printf("*p   = %d\n",  *p);
+    // Mostra o valor de x.
+    printf("x    = %d\n", x);
 
+    // Mostra o endereço de x.
+    printf("&x   = %p\n", (void*)&x);
+
+    // Mostra o endereço guardado no ponteiro.
+    printf("p    = %p\n", (void*)p);
+
+    // Mostra o valor que está no endereço apontado por p.
+    printf("*p   = %d\n", *p);
+
+    // Altera o valor de x usando o ponteiro.
     *p = 99;
+
+    // Mostra o novo valor de x.
     printf("x apos *p=99: %d\n", x);
+
     return 0;
 }
