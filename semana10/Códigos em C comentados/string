@@ -2,17 +2,25 @@
 #include <string.h>
 
 int main(void) {
+
+    // Cria uma string com o texto "Brasilia".
     char s[] = "Brasilia";
-    int  len = strlen(s);
+
+    // Calcula o tamanho da string.
+    int len = strlen(s);
 
     printf("Comprimento: %d\n", len);
 
-    /* percorre e imprime cada char e seu codigo ASCII */
+    // Mostra cada caractere da string e seu código ASCII.
     for (int i = 0; i < len; i++)
         printf("s[%d] = '%c'  (ASCII %d)\n", i, s[i], s[i]);
 
-    /* comparacao */
+    // Cria outra string para comparar.
     char t[] = "Brasilia";
-    printf("strcmp: %d\n", strcmp(s, t));  /* 0 = iguais */
+
+    // Compara as duas strings.
+    // Retorna 0 quando elas são iguais.
+    printf("strcmp: %d\n", strcmp(s, t));
+
     return 0;
 }
